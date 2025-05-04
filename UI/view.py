@@ -57,6 +57,27 @@ class View(ft.UserControl):
         self._page.controls.append(self.lst_result)
         self._page.update()
 
+    def load_result_umidita(self, genova, torino, milano):
+        if self.lst_result is not None:
+            self.lst_result.controls.clear()
+            self._page.controls.remove(self.lst_result)
+        self.lst_result.controls.append(ft.Text(f"L'umidità media nel mese selezionato è: "))
+        self.lst_result.controls.append(ft.Text(f"Genova: {genova}"))
+        self.lst_result.controls.append(ft.Text(f"Torino: {torino}"))
+        self.lst_result.controls.append(ft.Text(f"Milano: {milano}"))
+        self._page.controls.append(self.lst_result)
+        self._page.update()
+
+    def load_result_sequenza(self, sequenza, costo):
+        if self.lst_result is not None:
+            self.lst_result.controls.clear()
+            self._page.controls.remove(self.lst_result)
+        self.lst_result.controls.append(ft.Text(f"la sequenza ottima ha costo {costo}"))
+        for row in sequenza:
+            self.lst_result.controls.append(ft.Text(row.__str__()))
+        self._page.controls.append(self.lst_result)
+        self._page.update()
+
     @property
     def controller(self):
         return self._controller
